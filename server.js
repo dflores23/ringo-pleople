@@ -51,10 +51,6 @@ app.use(express.json()) // parse json bodies
 //__________________________________
 // Routes and Routers
 //__________________________________
-// test route
-app.get("/", (req, res) => {
-    res.send("hello world")
-})
 
 // Index Route - get request to /people
 // get us all the peoples
