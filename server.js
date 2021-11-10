@@ -1,6 +1,6 @@
-///////////////////////////////////
+//__________________________________
 // Dependencies
-///////////////////////////////////
+//__________________________________
 // dotenv to get our env variables
 require("dotenv").config()
 // PULL PORT variable from .env
@@ -15,9 +15,9 @@ const mongoose = require("mongoose")
 const cors = require("cors"); // cors headers
 const morgan = require("morgan") // logging
 
-//////////////////////////////////
+//__________________________________
 // Database Connection
-//////////////////////////////////
+//__________________________________
 // Establish Connection
 mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
@@ -27,12 +27,12 @@ mongoose.connect(MONGODB_URL, {
 // Connection Events
 mongoose.connection
 .on("open", () => console.log("Connected to Mongo"))
-.on("close", () => console.log("Disonnected to Mongo"))
+.on("close", () => console.log("Disconnected to Mongo"))
 .on("error", (error) => console.log(error))
 
-////////////////////////////////////////////////
+//__________________________________
 // Models
-////////////////////////////////////////////////
+//__________________________________
 const PeopleSchema = new mongoose.Schema({
     name: String,
     image: String,
@@ -41,16 +41,16 @@ const PeopleSchema = new mongoose.Schema({
 
 const People = mongoose.model("People", PeopleSchema)
 
-////////////////////////////////////////////////////
+//__________________________________
 // Middleware
-///////////////////////////////////////////////////
+//__________________________________
 app.use(cors()) // prevent cors errors
 app.use(morgan("dev")) // logging
 app.use(express.json()) // parse json bodies
 
-////////////////////////////////
+//__________________________________
 // Routes and Routers
-///////////////////////////////
+//__________________________________
 // test route
 app.get("/", (req, res) => {
     res.send("hello world")
@@ -102,9 +102,9 @@ app.delete("/people/:id", async (req, res) => {
     }
   });
 
-///////////////////////////////
+//__________________________________
 //Server listener
-////////////////////////////////
+//__________________________________
 app.listen(PORT, () => {
     console.log(`listening on PORT ${PORT}`)
 })
